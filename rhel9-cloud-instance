@@ -1,0 +1,20 @@
+### Cloud Instance Configuration ###
+
+nmcli c m eth0 ipv4.addresses 10.90.34.4/21
+nmcli c m eth0 ipv4.gateway 10.90.34.1
+nmcli c m eth0 ipv4.dns 168.63.129.16
+nmcli c m eth0 ipv4.dns-search vrts.lab
+nmcli general hostname bxk-az-crs.vrts.lab
+
+lvextend -l 100%FREE /dev/rootvg/usrlv
+xfs_growfs /usr
+
+mkdir /MSDP
+parted --script /dev/sdc unit GiB mklabel gpt mkpart primary 0% 100%
+pvcreate /dev/sdc1
+vgcreate vg_nbu_msdp /dev/sdc1
+lvcreate -l 100%FREE -n vol1 vg_nbu_msdp
+mkfs.xfs /dev/vg_nbu_msdp/vol1
+echo -e "/dev/vg_nbu_msdp/vol1\t/MSDP\txfs\tdefaults\t0 0" >> /etc/fstab
+systemctl daemon-reload
+mount -a
