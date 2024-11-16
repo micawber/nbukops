@@ -106,6 +106,8 @@ echo 3600 > /usr/openv/netbackup/db/config/REPORT_RAW_KBS
 echo 100000 > /usr/openv/netbackup/MAX_ENTRIES_PER_ADD
 echo 0 > /usr/openv/netbackup/NET_BUFFER_SZ
 
+echo 30 > /usr/openv/netbackup/db/config/OPT_DUP_WAIT_SLEEP
+
 echo PEM_USE_SAME_HOST_BY_NAME = 0 | nbsetconfig
 echo DISABLE_WHITELISTCACHE_CLEANUP_ON_JOB_START = 1 | nbsetconfig
 echo PROXY_DELAYED_SHUTDOWN = 1 | nbsetconfig
@@ -116,7 +118,7 @@ echo "/usr/bin/ldmtool /usr/lib64/libldm-1.0.so.0 /usr/lib64/libldm-1.0.so.0.0.0
 echo "readline glib2 json-glib libuuid device-mapper zlib" > /usr/lib64/guestfs/supermin.d/packages-for-ldm
 ### NetBackup 10.5 ve üstü için yapılacak ###
 
-/usr/openv/netbackup/bin/admincmd/bpnbaz -AddRBACPrincipal -User unixpwd:/etc/passwd:localusr
+/usr/openv/netbackup/bin/admincmd/bpnbaz -AddRBACPrincipal -User unixpwd:/etc/passwd:nbadmin
 
 ### Concat Volume for MSDP ###
 mkdir /MSDP
