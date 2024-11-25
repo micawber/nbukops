@@ -18,3 +18,12 @@ mkfs.xfs /dev/vg_nbu_msdp/vol1
 echo -e "/dev/vg_nbu_msdp/vol1\t/MSDP\txfs\tdefaults\t0 0" >> /etc/fstab
 systemctl daemon-reload
 mount -a
+
+touch /usr/openv/var/global/wsl/config/allowedlist.properties
+chmod a+r /usr/openv/var/global/wsl/config/allowedlist.properties
+chown nbwebsvc:nbwebgrp /usr/openv/var/global/wsl/config/allowedlist.properties
+cat <<EOT>> /usr/openv/var/global/wsl/config/allowedlist.properties
+host.headers=Public_IP
+origin.headers=Public_IP
+x.forwarded.host.headers=Public_IP
+EOT
