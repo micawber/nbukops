@@ -6,6 +6,8 @@ nmcli c m eth0 ipv4.dns 168.63.129.16
 nmcli c m eth0 ipv4.dns-search vrts.lab
 nmcli general hostname bxk-az-crs.vrts.lab
 
+echo -e "`hostname -I`\t`hostname -f`" >> /etc/hosts
+
 lvextend -l 100%FREE /dev/rootvg/usrlv
 xfs_growfs /usr
 
