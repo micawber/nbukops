@@ -91,6 +91,8 @@ usermod -s /sbin/nologin nbsvcusr
 usermod -a -G nbwebgrp nbsvcusr
 ### PRIMARY SERVER KURULUMU DURUMUNDA GEREKLİDİR ###
 
+echo -e "`hostname -I`\t`hostname -f`" >> /etc/hosts
+
 ### Kurulum Bittikten Sonra Çalıştırılacak ###
 /usr/openv/netbackup/bin/admincmd/bpconfig -mj 96
 /usr/openv/netbackup/bin/admincmd/bpretlevel -r 99 1 d
