@@ -12,7 +12,7 @@ metadata:
   name: box1-pvc
   namespace: box1
 spec:
-  storageClassName: csi-vsphere-datastore
+  storageClassName: cstor-storage-class-x1
   accessModes:
     - ReadWriteOnce
   volumeMode: Filesystem
