@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nginx
+labels:
+    backup: yes
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nginx-pvc
+  namespace: nginx
+spec:
+  storageClassName: cstor-storage-class-x1
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 2Gi
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  namespace: nginx
+spec:
+  containers:
+  - image: nginx
+    imagePullPolicy: IfNotPresent
+    name: nginx
+    ports:
+    - containerPort: 80
+      protocol: TCP
+    volumeMounts:
+      - mountPath: /var/lib/www/html
+        name: nginx-vol
+  volumes:
+  - name: nginx-vol
+    persistentVolumeClaim:
+      claimName: nginx-pvc
+      readOnly: false
