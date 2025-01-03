@@ -1,5 +1,10 @@
-yum install -y bash-completion net-tools dbus curl wget mc nc vim dos2unix s-nail ntsysv sysfsutils bind-utils yum-utils nfs-utils samba samba-winbind-clients sysstat tcpdump libXtst xterm dnsmasq fuse fuse3 chrony nscd open-vm-tools jq mailcap lvm2 udev udica libnsl libseccomp libtirpc selinu* nginx git dmidecode ipmitool libxcrypt-compat python3-dateutil python3-magic podman podman-plugins libguestfs python3-libguestfs
+yum install -y bash-completion net-tools dbus curl wget mc nc vim dos2unix s-nail ntsysv sysfsutils bind-utils yum-utils nfs-utils samba samba-winbind-clients sysstat tcpdump libXtst xterm dnsmasq fuse fuse3 chrony nscd open-vm-tools jq mailcap lvm2 udev udica libnsl libseccomp libtirpc selinu* nginx git dmidecode ipmitool libxcrypt-compat python3-dateutil python3-magic podman podman-plugins
 yum install -y adcli realmd sssd oddjob oddjob-mkhomedir samba-common-tools krb5-workstation authselect-compat
+
+dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+yum install -y libguestfs python3-libguestfs libguestfs-winsupport libldm
+echo "/usr/bin/ldmtool /usr/lib64/libldm-1.0.so.0 /usr/lib64/libldm-1.0.so.0.0.0" > /usr/lib64/guestfs/supermin.d/hostfiles-for-ldm
+echo "readline glib2 json-glib libuuid device-mapper zlib" > /usr/lib64/guestfs/supermin.d/packages-for-ldm
 
 rpm -hiv https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/s/s3fs-fuse-1.95-1.el9.x86_64.rpm
 rpm -hiv https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/s/s3cmd-2.4.0-1.el9.noarch.rpm
@@ -116,11 +121,6 @@ echo PEM_USE_SAME_HOST_BY_NAME = 0 | nbsetconfig
 echo DISABLE_WHITELISTCACHE_CLEANUP_ON_JOB_START = 1 | nbsetconfig
 echo PROXY_DELAYED_SHUTDOWN = 1 | nbsetconfig
 ### Kurulum Bittikten Sonra Çalıştırılacak ###
-
-### NetBackup 10.5 ve üstü için yapılacak ###
-echo "/usr/bin/ldmtool /usr/lib64/libldm-1.0.so.0 /usr/lib64/libldm-1.0.so.0.0.0" > /usr/lib64/guestfs/supermin.d/hostfiles-for-ldm
-echo "readline glib2 json-glib libuuid device-mapper zlib" > /usr/lib64/guestfs/supermin.d/packages-for-ldm
-### NetBackup 10.5 ve üstü için yapılacak ###
 
 /usr/openv/netbackup/bin/admincmd/bpnbaz -AddRBACPrincipal -User unixpwd:/etc/passwd:nbadmin
 
