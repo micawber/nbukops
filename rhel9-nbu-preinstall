@@ -1,4 +1,4 @@
-yum install -y bash-completion net-tools dbus curl wget mc nc vim dos2unix s-nail ntsysv sysfsutils bind-utils yum-utils nfs-utils samba samba-winbind-clients sysstat tcpdump libXtst xterm dnsmasq fuse fuse3 chrony nscd open-vm-tools jq mailcap lvm2 udev udica libnsl libseccomp libtirpc selinu* nginx git dmidecode ipmitool libxcrypt-compat python3-dateutil python3-magic podman podman-plugins
+yum install -y bash-completion net-tools dbus curl wget mc nc vim dos2unix s-nail ntsysv sysfsutils bind-utils yum-utils nfs-utils samba samba-winbind-clients sysstat tcpdump libXtst xterm dnsmasq fuse fuse3 chrony nscd open-vm-tools jq mailcap lvm2 udev udica libnsl libseccomp libtirpc selinu* nginx git dmidecode ipmitool libxcrypt-compat python3-dateutil python3-magic awscli podman podman-plugins
 yum install -y adcli realmd sssd oddjob oddjob-mkhomedir samba-common-tools krb5-workstation authselect-compat
 
 dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
