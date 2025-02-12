@@ -6,6 +6,7 @@ yum install -y libguestfs python3-libguestfs libguestfs-winsupport libldm
 echo "/usr/bin/ldmtool /usr/lib64/libldm-1.0.so.0 /usr/lib64/libldm-1.0.so.0.0.0" > /usr/lib64/guestfs/supermin.d/hostfiles-for-ldm
 echo "readline glib2 json-glib libuuid device-mapper zlib" > /usr/lib64/guestfs/supermin.d/packages-for-ldm
 
+rpm -hiv https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/n/ncurses-compat-libs-6.2-8.20210508.1.el9.x86_64.rpm
 rpm -hiv https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/s/s3fs-fuse-1.95-1.el9.x86_64.rpm
 rpm -hiv https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/s/s3cmd-2.4.0-1.el9.noarch.rpm
 
